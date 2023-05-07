@@ -12,7 +12,13 @@
 		F7A02A0D2A052CE200CDB0A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7A02A0C2A052CE200CDB0A3 /* Assets.xcassets */; };
 		F7A02A102A052CE200CDB0A3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7A02A0F2A052CE200CDB0A3 /* Preview Assets.xcassets */; };
 		F7A02A122A052CE200CDB0A3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A02A112A052CE200CDB0A3 /* Persistence.swift */; };
-		F7A02A152A052CE200CDB0A3 /* iFit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F7A02A132A052CE200CDB0A3 /* iFit.xcdatamodeld */; };
+		F7A02A1F2A05392D00CDB0A3 /* iFitApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F7A02A1D2A05392C00CDB0A3 /* iFitApp.xcdatamodeld */; };
+		F7A02A212A0544B000CDB0A3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A02A202A0544B000CDB0A3 /* LoginView.swift */; };
+		F7A02A282A0677F800CDB0A3 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A02A272A0677F800CDB0A3 /* RegisterView.swift */; };
+		F7A02A2E2A076F2C00CDB0A3 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A02A2D2A076F2C00CDB0A3 /* TabBar.swift */; };
+		F7A02A302A07701500CDB0A3 /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A02A2F2A07701500CDB0A3 /* PersonView.swift */; };
+		F7A02A322A0771FD00CDB0A3 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A02A312A0771FD00CDB0A3 /* ImagePicker.swift */; };
+		F7A02A352A07871A00CDB0A3 /* EnvironmentValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A02A342A07871A00CDB0A3 /* EnvironmentValue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,7 +28,13 @@
 		F7A02A0C2A052CE200CDB0A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7A02A0F2A052CE200CDB0A3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F7A02A112A052CE200CDB0A3 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		F7A02A142A052CE200CDB0A3 /* iFit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iFit.xcdatamodel; sourceTree = "<group>"; };
+		F7A02A1E2A05392C00CDB0A3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		F7A02A202A0544B000CDB0A3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F7A02A272A0677F800CDB0A3 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		F7A02A2D2A076F2C00CDB0A3 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		F7A02A2F2A07701500CDB0A3 /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
+		F7A02A312A0771FD00CDB0A3 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		F7A02A342A07871A00CDB0A3 /* EnvironmentValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +67,13 @@
 		F7A02A072A052CE000CDB0A3 /* iFit */ = {
 			isa = PBXGroup;
 			children = (
+				F7A02A332A0786F300CDB0A3 /* constant */,
+				F7A02A222A05453800CDB0A3 /* util */,
+				F7A02A1C2A052D2100CDB0A3 /* ui */,
+				F7A02A1B2A052D1600CDB0A3 /* entity */,
 				F7A02A082A052CE000CDB0A3 /* iFitApp.swift */,
-				F7A02A0A2A052CE000CDB0A3 /* ContentView.swift */,
 				F7A02A0C2A052CE200CDB0A3 /* Assets.xcassets */,
 				F7A02A112A052CE200CDB0A3 /* Persistence.swift */,
-				F7A02A132A052CE200CDB0A3 /* iFit.xcdatamodeld */,
 				F7A02A0E2A052CE200CDB0A3 /* Preview Content */,
 			);
 			path = iFit;
@@ -71,6 +85,66 @@
 				F7A02A0F2A052CE200CDB0A3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F7A02A1B2A052D1600CDB0A3 /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				F7A02A1D2A05392C00CDB0A3 /* iFitApp.xcdatamodeld */,
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		F7A02A1C2A052D2100CDB0A3 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				F7A02A2C2A076F1800CDB0A3 /* bar */,
+				F7A02A2B2A076CF500CDB0A3 /* personal */,
+				F7A02A2A2A076CB800CDB0A3 /* starter */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		F7A02A222A05453800CDB0A3 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				F7A02A312A0771FD00CDB0A3 /* ImagePicker.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		F7A02A2A2A076CB800CDB0A3 /* starter */ = {
+			isa = PBXGroup;
+			children = (
+				F7A02A0A2A052CE000CDB0A3 /* ContentView.swift */,
+				F7A02A202A0544B000CDB0A3 /* LoginView.swift */,
+				F7A02A272A0677F800CDB0A3 /* RegisterView.swift */,
+			);
+			path = starter;
+			sourceTree = "<group>";
+		};
+		F7A02A2B2A076CF500CDB0A3 /* personal */ = {
+			isa = PBXGroup;
+			children = (
+				F7A02A2F2A07701500CDB0A3 /* PersonView.swift */,
+			);
+			path = personal;
+			sourceTree = "<group>";
+		};
+		F7A02A2C2A076F1800CDB0A3 /* bar */ = {
+			isa = PBXGroup;
+			children = (
+				F7A02A2D2A076F2C00CDB0A3 /* TabBar.swift */,
+			);
+			path = bar;
+			sourceTree = "<group>";
+		};
+		F7A02A332A0786F300CDB0A3 /* constant */ = {
+			isa = PBXGroup;
+			children = (
+				F7A02A342A07871A00CDB0A3 /* EnvironmentValue.swift */,
+			);
+			path = constant;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,10 +217,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7A02A212A0544B000CDB0A3 /* LoginView.swift in Sources */,
 				F7A02A122A052CE200CDB0A3 /* Persistence.swift in Sources */,
-				F7A02A152A052CE200CDB0A3 /* iFit.xcdatamodeld in Sources */,
+				F7A02A1F2A05392D00CDB0A3 /* iFitApp.xcdatamodeld in Sources */,
+				F7A02A322A0771FD00CDB0A3 /* ImagePicker.swift in Sources */,
+				F7A02A282A0677F800CDB0A3 /* RegisterView.swift in Sources */,
 				F7A02A0B2A052CE000CDB0A3 /* ContentView.swift in Sources */,
+				F7A02A302A07701500CDB0A3 /* PersonView.swift in Sources */,
 				F7A02A092A052CE000CDB0A3 /* iFitApp.swift in Sources */,
+				F7A02A2E2A076F2C00CDB0A3 /* TabBar.swift in Sources */,
+				F7A02A352A07871A00CDB0A3 /* EnvironmentValue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,13 +429,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		F7A02A132A052CE200CDB0A3 /* iFit.xcdatamodeld */ = {
+		F7A02A1D2A05392C00CDB0A3 /* iFitApp.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				F7A02A142A052CE200CDB0A3 /* iFit.xcdatamodel */,
+				F7A02A1E2A05392C00CDB0A3 /* Model.xcdatamodel */,
 			);
-			currentVersion = F7A02A142A052CE200CDB0A3 /* iFit.xcdatamodel */;
-			path = iFit.xcdatamodeld;
+			currentVersion = F7A02A1E2A05392C00CDB0A3 /* Model.xcdatamodel */;
+			path = iFitApp.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

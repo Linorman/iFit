@@ -7,14 +7,16 @@
 
 import SwiftUI
 
+let persistenceController = PersistenceController.shared
+
 @main
 struct iFitApp: App {
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
-        WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+        let extractedExpr = WindowGroup {
+            ContentView().environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
+        extractedExpr
     }
 }
