@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F793CB3D2A0A660D00EB2C1E /* UIImageExtra.swift in Sources */ = {isa = PBXBuildFile; fileRef = F793CB3C2A0A660D00EB2C1E /* UIImageExtra.swift */; };
 		F7A02A092A052CE000CDB0A3 /* iFitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A02A082A052CE000CDB0A3 /* iFitApp.swift */; };
 		F7A02A0B2A052CE000CDB0A3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A02A0A2A052CE000CDB0A3 /* ContentView.swift */; };
 		F7A02A0D2A052CE200CDB0A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7A02A0C2A052CE200CDB0A3 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F793CB3C2A0A660D00EB2C1E /* UIImageExtra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtra.swift; sourceTree = "<group>"; };
 		F7A02A052A052CE000CDB0A3 /* iFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7A02A082A052CE000CDB0A3 /* iFitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iFitApp.swift; sourceTree = "<group>"; };
 		F7A02A0A2A052CE000CDB0A3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				F7A02A312A0771FD00CDB0A3 /* ImagePicker.swift */,
+				F793CB3C2A0A660D00EB2C1E /* UIImageExtra.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				F7A02A302A07701500CDB0A3 /* PersonView.swift in Sources */,
 				F7A02A092A052CE000CDB0A3 /* iFitApp.swift in Sources */,
 				F7A02A2E2A076F2C00CDB0A3 /* TabBar.swift in Sources */,
+				F793CB3D2A0A660D00EB2C1E /* UIImageExtra.swift in Sources */,
 				F7A02A352A07871A00CDB0A3 /* EnvironmentValue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

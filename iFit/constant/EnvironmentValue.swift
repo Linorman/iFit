@@ -14,17 +14,17 @@ extension EnvironmentValues {
         set { self[IsLoggedKey.self] = newValue }
     }
     
-//    var username: Binding<String> {
-//        get { self[UserNameKey.self] }
-//        set { self[UserNameKey.self] = newValue }
-//    }
-    
-    var localUser: Binding<User> {
-        get { self[LocalUserKey.self] }
-        set { self[LocalUserKey.self] = newValue }
+    var localUsername: Binding<String> {
+        get { self[UserNameKey.self] }
+        set { self[UserNameKey.self] = newValue }
     }
-//    var localUser: User {
+    
+//    var localUser: Binding<User> {
 //        get { self[LocalUserKey.self] }
+//        set { self[LocalUserKey.self] = newValue }
+//    }
+//    var localUser: User {
+//        get { return self[LocalUserKey.self] }
 //        set { self[LocalUserKey.self] = newValue }
 //    }
 }
@@ -33,15 +33,16 @@ fileprivate struct IsLoggedKey: EnvironmentKey {
     static let defaultValue: Binding<Bool> = .constant(false)
 }
 
-//fileprivate struct UserNameKey: EnvironmentKey {
-//    static let defaultValue: Binding<String> =
-//        .constant("")
+fileprivate struct UserNameKey: EnvironmentKey {
+    static let defaultValue: Binding<String> =
+        .constant("")
+}
+
+//fileprivate struct LocalUserKey: EnvironmentKey {
+//    static let defaultValue: Binding<User> =
+//        .constant(User())
 //}
 
-fileprivate struct LocalUserKey: EnvironmentKey {
-    static let defaultValue: Binding<User> =
-        .constant(User())
-}
 //fileprivate struct LocalUserKey: EnvironmentKey {
 //    static let defaultValue: User = User()
 //}

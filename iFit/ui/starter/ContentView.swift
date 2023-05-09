@@ -23,13 +23,14 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView{
-            if isLogged {
-                TabBarView()
-                    .environment(\.isLogged, $isLogged)
-            } else {
-                LoginView()
-                    .environment(\.isLogged, $isLogged)
-            }
+//            if isLogged {
+//                TabBarView()
+//                    .environment(\.isLogged, $isLogged)
+//            } else {
+//                LoginView()
+//                    .environment(\.isLogged, $isLogged)
+//            }
+            LoginView()
         }
     }
 }

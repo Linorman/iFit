@@ -10,22 +10,28 @@ import SwiftUI
 
 struct TabBarView: View {
     @State private var selection = 0
+    @State private var localUsername: String
+    
+    init(selection: Int = 0, localUsername: String) {
+        self.selection = selection
+        self.localUsername = localUsername
+    }
     
     var body: some View {
         TabView(selection: $selection) {
-            PersonView()
+            PersonView(localUsername: localUsername)
                 .tabItem {
                     Image(systemName: "list.bullet")
                     Text("历史")
                 }
                 .tag(0)
-            PersonView()
+            PersonView(localUsername: localUsername)
                 .tabItem {
                     Image(systemName: "figure.run")
                     Text("运动")
                 }
                 .tag(1)
-            PersonView()
+            PersonView(localUsername: localUsername)
                 .tabItem {
                     Image(systemName: "person")
                     Text("个人")
