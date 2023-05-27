@@ -7,36 +7,57 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F75493AE2A0BB8F900F14C87 /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75493AD2A0BB8F900F14C87 /* ExerciseView.swift */; };
+		F75493B02A0BBA0600F14C87 /* CountDownModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75493AF2A0BBA0600F14C87 /* CountDownModeView.swift */; };
+		F75493B62A0BBFF100F14C87 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75493B52A0BBFF100F14C87 /* TimerModel.swift */; };
 		F793CB3D2A0A660D00EB2C1E /* UIImageExtra.swift in Sources */ = {isa = PBXBuildFile; fileRef = F793CB3C2A0A660D00EB2C1E /* UIImageExtra.swift */; };
+		F793CB402A0AA28E00EB2C1E /* SettingKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F793CB3F2A0AA28E00EB2C1E /* SettingKeys.swift */; };
+		F793CB432A0AA2E600EB2C1E /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F793CB422A0AA2E600EB2C1E /* SettingView.swift */; };
+		F793CB452A0B345B00EB2C1E /* SoftwareInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F793CB442A0B345B00EB2C1E /* SoftwareInfoView.swift */; };
+		F793CB4A2A0B3E3500EB2C1E /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F793CB492A0B3E3500EB2C1E /* AudioManager.swift */; };
+		F793CB4D2A0B40B400EB2C1E /* TimerModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F793CB4C2A0B40B400EB2C1E /* TimerModeView.swift */; };
 		F7A02A092A052CE000CDB0A3 /* iFitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A02A082A052CE000CDB0A3 /* iFitApp.swift */; };
 		F7A02A0B2A052CE000CDB0A3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A02A0A2A052CE000CDB0A3 /* ContentView.swift */; };
 		F7A02A0D2A052CE200CDB0A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7A02A0C2A052CE200CDB0A3 /* Assets.xcassets */; };
 		F7A02A102A052CE200CDB0A3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7A02A0F2A052CE200CDB0A3 /* Preview Assets.xcassets */; };
 		F7A02A122A052CE200CDB0A3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A02A112A052CE200CDB0A3 /* Persistence.swift */; };
-		F7A02A1F2A05392D00CDB0A3 /* iFitApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F7A02A1D2A05392C00CDB0A3 /* iFitApp.xcdatamodeld */; };
 		F7A02A212A0544B000CDB0A3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A02A202A0544B000CDB0A3 /* LoginView.swift */; };
 		F7A02A282A0677F800CDB0A3 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A02A272A0677F800CDB0A3 /* RegisterView.swift */; };
 		F7A02A2E2A076F2C00CDB0A3 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A02A2D2A076F2C00CDB0A3 /* TabBar.swift */; };
 		F7A02A302A07701500CDB0A3 /* PersonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A02A2F2A07701500CDB0A3 /* PersonView.swift */; };
 		F7A02A322A0771FD00CDB0A3 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A02A312A0771FD00CDB0A3 /* ImagePicker.swift */; };
 		F7A02A352A07871A00CDB0A3 /* EnvironmentValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A02A342A07871A00CDB0A3 /* EnvironmentValue.swift */; };
+		F7EAE5D82A17603900406142 /* AnalyzeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAE5D72A17603800406142 /* AnalyzeView.swift */; };
+		F7EAE5DA2A17604500406142 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EAE5D92A17604500406142 /* HistoryView.swift */; };
+		F7FEEC792A0CE02C00580C0B /* iFitApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F7FEEC762A0CE02C00580C0B /* iFitApp.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F75493AD2A0BB8F900F14C87 /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
+		F75493AF2A0BBA0600F14C87 /* CountDownModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownModeView.swift; sourceTree = "<group>"; };
+		F75493B52A0BBFF100F14C87 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		F793CB3C2A0A660D00EB2C1E /* UIImageExtra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtra.swift; sourceTree = "<group>"; };
+		F793CB3F2A0AA28E00EB2C1E /* SettingKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingKeys.swift; sourceTree = "<group>"; };
+		F793CB422A0AA2E600EB2C1E /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		F793CB442A0B345B00EB2C1E /* SoftwareInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftwareInfoView.swift; sourceTree = "<group>"; };
+		F793CB492A0B3E3500EB2C1E /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		F793CB4C2A0B40B400EB2C1E /* TimerModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModeView.swift; sourceTree = "<group>"; };
 		F7A02A052A052CE000CDB0A3 /* iFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7A02A082A052CE000CDB0A3 /* iFitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iFitApp.swift; sourceTree = "<group>"; };
 		F7A02A0A2A052CE000CDB0A3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F7A02A0C2A052CE200CDB0A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7A02A0F2A052CE200CDB0A3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F7A02A112A052CE200CDB0A3 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		F7A02A1E2A05392C00CDB0A3 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F7A02A202A0544B000CDB0A3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F7A02A272A0677F800CDB0A3 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		F7A02A2D2A076F2C00CDB0A3 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		F7A02A2F2A07701500CDB0A3 /* PersonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonView.swift; sourceTree = "<group>"; };
 		F7A02A312A0771FD00CDB0A3 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		F7A02A342A07871A00CDB0A3 /* EnvironmentValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValue.swift; sourceTree = "<group>"; };
+		F7EAE5D72A17603800406142 /* AnalyzeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeView.swift; sourceTree = "<group>"; };
+		F7EAE5D92A17604500406142 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		F7FEEC772A0CE02C00580C0B /* iFitApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iFitApp.xcdatamodel; sourceTree = "<group>"; };
+		F7FEEC782A0CE02C00580C0B /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +71,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F793CB462A0B3AB900EB2C1E /* sport */ = {
+			isa = PBXGroup;
+			children = (
+				F793CB4C2A0B40B400EB2C1E /* TimerModeView.swift */,
+				F75493AF2A0BBA0600F14C87 /* CountDownModeView.swift */,
+				F75493AD2A0BB8F900F14C87 /* ExerciseView.swift */,
+			);
+			path = sport;
+			sourceTree = "<group>";
+		};
 		F7A029FC2A052CE000CDB0A3 = {
 			isa = PBXGroup;
 			children = (
@@ -69,7 +100,7 @@
 		F7A02A072A052CE000CDB0A3 /* iFit */ = {
 			isa = PBXGroup;
 			children = (
-				F7A02A332A0786F300CDB0A3 /* constant */,
+				F7A02A332A0786F300CDB0A3 /* global */,
 				F7A02A222A05453800CDB0A3 /* util */,
 				F7A02A1C2A052D2100CDB0A3 /* ui */,
 				F7A02A1B2A052D1600CDB0A3 /* entity */,
@@ -92,7 +123,7 @@
 		F7A02A1B2A052D1600CDB0A3 /* entity */ = {
 			isa = PBXGroup;
 			children = (
-				F7A02A1D2A05392C00CDB0A3 /* iFitApp.xcdatamodeld */,
+				F7FEEC762A0CE02C00580C0B /* iFitApp.xcdatamodeld */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -100,6 +131,8 @@
 		F7A02A1C2A052D2100CDB0A3 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				F7E491FB2A0CE31C00A5525D /* history */,
+				F793CB462A0B3AB900EB2C1E /* sport */,
 				F7A02A2C2A076F1800CDB0A3 /* bar */,
 				F7A02A2B2A076CF500CDB0A3 /* personal */,
 				F7A02A2A2A076CB800CDB0A3 /* starter */,
@@ -110,7 +143,9 @@
 		F7A02A222A05453800CDB0A3 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				F75493B52A0BBFF100F14C87 /* TimerModel.swift */,
 				F7A02A312A0771FD00CDB0A3 /* ImagePicker.swift */,
+				F793CB492A0B3E3500EB2C1E /* AudioManager.swift */,
 				F793CB3C2A0A660D00EB2C1E /* UIImageExtra.swift */,
 			);
 			path = util;
@@ -130,6 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				F7A02A2F2A07701500CDB0A3 /* PersonView.swift */,
+				F793CB422A0AA2E600EB2C1E /* SettingView.swift */,
+				F793CB442A0B345B00EB2C1E /* SoftwareInfoView.swift */,
 			);
 			path = personal;
 			sourceTree = "<group>";
@@ -142,12 +179,22 @@
 			path = bar;
 			sourceTree = "<group>";
 		};
-		F7A02A332A0786F300CDB0A3 /* constant */ = {
+		F7A02A332A0786F300CDB0A3 /* global */ = {
 			isa = PBXGroup;
 			children = (
 				F7A02A342A07871A00CDB0A3 /* EnvironmentValue.swift */,
+				F793CB3F2A0AA28E00EB2C1E /* SettingKeys.swift */,
 			);
-			path = constant;
+			path = global;
+			sourceTree = "<group>";
+		};
+		F7E491FB2A0CE31C00A5525D /* history */ = {
+			isa = PBXGroup;
+			children = (
+				F7EAE5D72A17603800406142 /* AnalyzeView.swift */,
+				F7EAE5D92A17604500406142 /* HistoryView.swift */,
+			);
+			path = history;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,15 +267,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F793CB4D2A0B40B400EB2C1E /* TimerModeView.swift in Sources */,
 				F7A02A212A0544B000CDB0A3 /* LoginView.swift in Sources */,
 				F7A02A122A052CE200CDB0A3 /* Persistence.swift in Sources */,
-				F7A02A1F2A05392D00CDB0A3 /* iFitApp.xcdatamodeld in Sources */,
+				F75493AE2A0BB8F900F14C87 /* ExerciseView.swift in Sources */,
 				F7A02A322A0771FD00CDB0A3 /* ImagePicker.swift in Sources */,
 				F7A02A282A0677F800CDB0A3 /* RegisterView.swift in Sources */,
 				F7A02A0B2A052CE000CDB0A3 /* ContentView.swift in Sources */,
+				F7EAE5DA2A17604500406142 /* HistoryView.swift in Sources */,
+				F7EAE5D82A17603900406142 /* AnalyzeView.swift in Sources */,
+				F793CB402A0AA28E00EB2C1E /* SettingKeys.swift in Sources */,
 				F7A02A302A07701500CDB0A3 /* PersonView.swift in Sources */,
+				F793CB432A0AA2E600EB2C1E /* SettingView.swift in Sources */,
+				F75493B62A0BBFF100F14C87 /* TimerModel.swift in Sources */,
+				F793CB4A2A0B3E3500EB2C1E /* AudioManager.swift in Sources */,
+				F793CB452A0B345B00EB2C1E /* SoftwareInfoView.swift in Sources */,
 				F7A02A092A052CE000CDB0A3 /* iFitApp.swift in Sources */,
+				F75493B02A0BBA0600F14C87 /* CountDownModeView.swift in Sources */,
 				F7A02A2E2A076F2C00CDB0A3 /* TabBar.swift in Sources */,
+				F7FEEC792A0CE02C00580C0B /* iFitApp.xcdatamodeld in Sources */,
 				F793CB3D2A0A660D00EB2C1E /* UIImageExtra.swift in Sources */,
 				F7A02A352A07871A00CDB0A3 /* EnvironmentValue.swift in Sources */,
 			);
@@ -433,12 +490,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		F7A02A1D2A05392C00CDB0A3 /* iFitApp.xcdatamodeld */ = {
+		F7FEEC762A0CE02C00580C0B /* iFitApp.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				F7A02A1E2A05392C00CDB0A3 /* Model.xcdatamodel */,
+				F7FEEC772A0CE02C00580C0B /* iFitApp.xcdatamodel */,
+				F7FEEC782A0CE02C00580C0B /* Model.xcdatamodel */,
 			);
-			currentVersion = F7A02A1E2A05392C00CDB0A3 /* Model.xcdatamodel */;
+			currentVersion = F7FEEC772A0CE02C00580C0B /* iFitApp.xcdatamodel */;
 			path = iFitApp.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -22,23 +22,24 @@ struct LoginView: View {
         VStack {
             Image("Logo")
             HStack {
-                Text("Username:")
+                Text("用户名:")
+                    .frame(width: 70, height: 5)
                 TextField("Username", text: $username)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
             }
             HStack {
-                Text("Password:")
+                Text("密码:")
+                    .frame(width: 70, height: 5)
                 SecureField("Password", text: $password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
             }
             
-            
             Button(action: {
                 login()
             }) {
-                Text("Login")
+                Text("登陆")
             }
             .padding()
             .foregroundColor(.brown)
@@ -46,7 +47,7 @@ struct LoginView: View {
             
             Spacer()
             NavigationLink(destination: RegisterView()) {
-                            Text("Don't have an account? Register here.")
+                            Text("还没有账号? 点击这里注册")
                                 .foregroundColor(.blue)
                                 .fontWeight(.light)
                                 .font(.footnote)

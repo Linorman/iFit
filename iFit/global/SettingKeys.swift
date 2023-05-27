@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct SettingsKeys {
+    static let sportUnit = "SportUnit"
+    static let ringSetting = "RingSetting"
+    static let dailyTime = "DailyTime"
+    static let timer = "Timer"
+}

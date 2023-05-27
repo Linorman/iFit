@@ -10,405 +10,103 @@ import SwiftUI
 import AVFoundation
 import CoreData
 
-//struct ExerciseTimerView: View {
-//    @Environment(\.managedObjectContext) private var viewContext
-//
-//    @State private var timer: Timer?
-//    @State private var countdownTimer: Timer?
-//
-//    @State private var duration: Double = 0
-//    @State private var isTiming: Bool = false
-//    @State private var isCountdown: Bool = false
-//    @State private var countdownSeconds: Int16 = 0
-//
-//    @State private var showImagePicker: Bool = false
-//    @State private var selectedImage: UIImage?
-//
-//    @State private var image: UIImage?
-//
-//    private let countdownSecondsDefault: Int16 = 120
-//
-//    @ObservedObject var audioManager = AudioManager()
-//
-//    var body: some View {
-//        VStack {
-//            if let selectedImage = selectedImage {
-//                Image(uiImage: selectedImage)
-//                    .resizable()
-//                    .scaledToFit()
-//                    .padding()
-//            }
-//
-//            Text("\(Int(duration / 60)):\(String(format: "%02d", Int(duration) % 60))")
-//                .font(.largeTitle)
-//                .padding()
-//
-//            if isCountdown {
-//                Text("Countdown: \(countdownSeconds) seconds")
-//                    .font(.title)
-//                    .foregroundColor(.red)
-//                    .padding()
-//            }
-//
-//            Spacer()
-//
-//            HStack {
-//                Button(action: startTimer) {
-//                    Text(isTiming ? "Stop" : "Start")
-//                        .font(.headline)
-//                        .foregroundColor(.white)
-//                        .padding()
-//                        .background(isTiming ? Color.red : Color.green)
-//                        .cornerRadius(15)
-//                }
-//                .disabled(isCountdown)
-//
-//                Button(action: resetTimer) {
-//                    Text("Reset")
-//                        .font(.headline)
-//                        .foregroundColor(.white)
-//                        .padding()
-//                        .background(Color.gray)
-//                        .cornerRadius(15)
-//                }
-//                .disabled(isTiming || isCountdown)
-//            }
-//
-//            Button(action: selectImage) {
-//                Text("Select Image")
-//                    .font(.headline)
-//                    .foregroundColor(.white)
-//                    .padding()
-//                    .background(Color.blue)
-//                    .cornerRadius(15)
-//            }
-//            .sheet(isPresented: $showImagePicker, onDismiss: saveRecord) {
-//                ImagePicker(image: self.$image)
-//            }
-//        }
-//        .onAppear {
-//            resetTimer()
-//        }
-//    }
-//
-//    private func startTimer() {
-//        if isTiming {
-//            stopTimer()
-//        } else {
-//            if countdownSeconds > 0 {
-//                startCountdown()
-//            } else {
-//                startExercise()
-//            }
-//        }
-//    }
-//
-//    private func startExercise() {
-//        isTiming = true
-//
-//        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-//            duration += 1
-//
-//            if Int(duration) % 60 == 0 {
-//                playBellSound()
-//            }
-//        }
-//    }
-//
-//    private func startCountdown() {
-//        isCountdown = true
-//        countdownSeconds = countdownSecondsDefault
-//
-//        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-//            countdownSeconds -= 1
-//
-//            if countdownSeconds <= 0 {
-//                stopCountdown()
-//                startExercise()
-//            }
-//        }
-//    }
-//
-//    private func stopTimer() {
-//        isTiming = false
-//
-//        timer?.invalidate()
-//        timer = nil
-//
-//        stopCountdown()
-//    }
-//
-//    private func stopCountdown() {
-//        isCountdown = false
-//
-//        countdownTimer?.invalidate()
-//        countdownTimer = nil
-//    }
-//
-//    private func resetTimer() {
-//        stopTimer()
-//        selectedImage = nil
-//        duration = 0
-//        image = nil
-//    }
-//
-//    private func playBellSound() {
-//        audioManager.playBellSound()
-//    }
-//
-//    private func selectImage() {
-//        showImagePicker = true
-//    }
-//
-//    private func saveRecord() {
-//        guard let image = image else { return }
-//
-//        let newRecord = ExerciseRecord(context: viewContext)
-//        newRecord.time = duration
-//        newRecord.image = image.jpegData(compressionQuality: 1.0)
-//        newRecord.date = Date()
-//
-//        do {
-//            try viewContext.save()
-//        } catch {
-//            let nsError = error as NSError
-//            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-//        }
-//
-//        selectedImage = image
-//    }
-//}
-
-
-
-//struct ExerciseTimerView: View {
-//    @Environment(\.managedObjectContext) private var viewContext
-//
-//    @State private var timer: Timer?
-//    @State private var countdownTimer: Timer?
-//
-//    @State private var duration: Double = 0
-//    @State private var isTiming: Bool = false
-//    @State private var isCountdown: Bool = false
-//    @State private var countdownSeconds: Int16 = 0
-//
-//    @State private var showImagePicker: Bool = false
-//    @State private var selectedImage: UIImage?
-//
-//    @State private var image: UIImage?
-//
-//    @State private var countdownInput: String = ""
-//    @State private var isCountdownMode: Bool = false
-//
-//    private let countdownSecondsDefault: Int16 = 120
-//
-//    @ObservedObject var audioManager = AudioManager()
-//
-//    var body: some View {
-//        VStack {
-//            if let selectedImage = selectedImage {
-//                Image(uiImage: selectedImage)
-//                    .resizable()
-//                    .scaledToFit()
-//                    .padding()
-//            }
-//
-//            Text("\(Int(duration / 60)):\(String(format: "%02d", Int(duration) % 60))")
-//                .font(.largeTitle)
-//                .padding()
-//
-//            if isCountdown {
-//                Text("Countdown: \(countdownSeconds) seconds")
-//                    .font(.title)
-//                    .foregroundColor(.red)
-//                    .padding()
-//            }
-//
-//            if isCountdownMode {
-//                TextField("Countdown Time (seconds)", text: $countdownInput)
-//                    .keyboardType(.numberPad)
-//                    .textFieldStyle(RoundedBorderTextFieldStyle())
-//                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))
-//            }
-//
-//            Spacer()
-//
-//            HStack {
-//                Button(action: startTimer) {
-//                    Text(isTiming ? "Stop" : "Start")
-//                        .font(.headline)
-//                        .foregroundColor(.white)
-//                        .padding()
-//                        .background(isTiming ? Color.red : Color.green)
-//                        .cornerRadius(15)
-//                }
-//                .disabled(isCountdownMode || isCountdown)
-//
-//                Button(action: resetTimer) {
-//                    Text("Reset")
-//                        .font(.headline)
-//                        .foregroundColor(.white)
-//                        .padding()
-//                        .background(Color.gray)
-//                        .cornerRadius(15)
-//                }
-//                .disabled(isTiming || isCountdown)
-//            }
-//
-//            Button(action: selectImage) {
-//                Text("Select Image")
-//                    .font(.headline)
-//                    .foregroundColor(.white)
-//                    .padding()
-//                    .background(Color.blue)
-//                    .cornerRadius(15)
-//            }
-//            .sheet(isPresented: $showImagePicker, onDismiss: saveRecord) {
-//                ImagePicker(image: self.$image)
-//            }
-//
-//            if !isCountdownMode {
-//                Button(action: toggleMode) {
-//                    Text("Switch to Countdown Mode")
-//                        .font(.headline)
-//                        .foregroundColor(.white)
-//                        .padding()
-//                        .background(Color.purple)
-//                        .cornerRadius(15)
-//                }
-//            } else {
-//                Button(action: toggleMode) {
-//                    Text("Switch to Timer Mode")
-//                        .font(.headline)
-//                        .foregroundColor(.white)
-//                        .padding()
-//                        .background(Color.purple)
-//                        .cornerRadius(15)
-//                }
-//            }
-//        }
-//        .onAppear {
-//            resetTimer()
-//        }
-//    }
-//
-//    private func startTimer() {
-//        if isTiming {
-//            stopTimer()
-//        } else {
-//            if isCountdownMode {
-//                startCountdown()
-//            } else {
-//                startExercise()
-//            }
-//        }
-//    }
-//
-//    private func startExercise() {
-//        isTiming = true
-//
-//        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-//            duration += 1
-//
-//            if Int(duration) % 60 == 0 {
-//                playBellSound()
-//            }
-//        }
-//    }
-//
-//    private func startCountdown() {
-//        guard let seconds = Int(countdownInput.trimmingCharacters(in: .whitespacesAndNewlines)) else { return }
-//
-//        duration = Double(seconds)
-//        countdownSeconds = Int16(seconds)
-//
-//        isCountdownMode = true
-//        isCountdown = true
-//
-//        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-//            countdownSeconds -= 1
-//
-//            if countdownSeconds <= 0 {
-//                stopCountdown()
-//                playBellSound()
-//            }
-//        }
-//    }
-//
-//    private func stopTimer() {
-//        isTiming = false
-//
-//        timer?.invalidate()
-//        timer = nil
-//
-//        stopCountdown()
-//    }
-//
-//    private func stopCountdown() {
-//        isCountdown = false
-//
-//        countdownTimer?.invalidate()
-//        countdownTimer = nil
-//    }
-//
-//    private func resetTimer() {
-//        stopTimer()
-//        selectedImage = nil
-//        duration = 0
-//        image = nil
-//        countdownInput = ""
-//        isCountdownMode = false
-//    }
-//
-//    private func playBellSound() {
-//        audioManager.playBellSound()
-//    }
-//
-//    private func selectImage() {
-//        showImagePicker = true
-//    }
-//
-//    private func saveRecord() {
-//        guard let image = image else { return }
-//
-//        let newRecord = ExerciseRecord(context: viewContext)
-//        newRecord.time = duration
-//        newRecord.image = image.jpegData(compressionQuality: 1.0)
-//        newRecord.date = Date()
-//
-//        do {
-//            try viewContext.save()
-//        } catch {
-//            let nsError = error as NSError
-//            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-//        }
-//
-//        selectedImage = image
-//    }
-//
-//    private func toggleMode() {
-//        isCountdownMode.toggle()
-//        resetTimer()
-//    }
-//}
-
-struct TimerView: View {
-    @Binding var isRunning: Bool
-    @Binding var timeElapsed: TimeInterval
+struct TimerModeView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    @StateObject private var viewModel = TimerModel()
+    @State private var showImagePicker = false
+    @State private var image: UIImage?
+    @State private var showAlert = false
+    @State private var localUsername: String
     
-    private let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
-
+    init(localUsername: String) {
+        _localUsername = State(initialValue: localUsername)
+    }
+    
     var body: some View {
-        Text(timeString(from: timeElapsed))
-            .font(.system(size: 80))
-            .padding()
-            .onReceive(timer) { _ in
-                guard isRunning else { return }
-                timeElapsed += 0.1
+        VStack {
+            Button(action: {
+                self.showImagePicker = true
+            }) {
+                if let image = image {
+                    Image(uiImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 210, height: 170)
+                        .cornerRadius(10)
+                } else {
+                    Image(systemName: "photo")
+                        .resizable()
+                        .frame(width: 210, height: 170)
+                        .cornerRadius(10)
+                }
             }
+            .sheet(isPresented: $showImagePicker) {
+                ImagePicker(image: $image)
+            }
+            .padding()
+            
+            Text(timeString(timeElapsed: viewModel.timeElapsed))
+                .font(.system(size: 80, weight: .bold, design: .monospaced))
+            
+            HStack(spacing: 55) {
+                Image(systemName: viewModel.isRunning ? "pause.fill" : "play.fill")
+                    .font(.system(size: 40))
+                    .foregroundColor(.white)
+                    .frame(minWidth: 0, maxWidth: 80, minHeight: 0, maxHeight: 80)
+                    .background(viewModel.isRunning ? .red : .green)
+                    .clipShape(Capsule())
+                    .onTapGesture {
+                        viewModel.toggle()
+                    }
+                Image(systemName: "arrow.clockwise")
+                    .font(.system(size: 40))
+                    .foregroundColor(.white)
+                    .frame(minWidth: 0, maxWidth: 80, minHeight: 0, maxHeight: 80)
+                    .background(.blue)
+                    .clipShape(Capsule())
+                    .onTapGesture {
+                        viewModel.reset()
+                    }
+            }.padding(.bottom, 55)
+            
+            Spacer()
+            
+            Button(action: {
+                if let image = image {
+                    let record = ExerciseRecord(context: viewContext)
+                    record.username = self.localUsername
+                    record.duration = viewModel.timeElapsed
+                    record.image = image.pngData()
+                    record.dateStamp = Date()
+                    do {
+                        try viewContext.save()
+                    } catch {
+                        print("Error saving exercise record: \(error.localizedDescription)")
+                    }
+                } else {
+                    print("No image selected")
+                }
+                
+                viewModel.reset()
+            }) {
+                Image(systemName: "square.and.arrow.down")
+                    .resizable()
+                    .frame(width: 30, height: 30)
+            }
+            .alert("错误", isPresented: $showAlert) {
+                Text("没有选择图片。")
+            }
+        }
+        .padding()
+        .navigationBarTitle("计时器")
     }
+}
 
-    private func timeString(from time: TimeInterval) -> String {
-        return String(format: "%.1f", time)
-    }
+func timeString(timeElapsed: TimeInterval) -> String {
+    let formatter = DateComponentsFormatter()
+    formatter.unitsStyle = .positional
+    formatter.allowedUnits = [.minute, .second]
+    formatter.zeroFormattingBehavior = .pad
+    
+    return formatter.string(from: timeElapsed)!
 }

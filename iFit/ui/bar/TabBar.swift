@@ -19,13 +19,13 @@ struct TabBarView: View {
     
     var body: some View {
         TabView(selection: $selection) {
-            PersonView(localUsername: localUsername)
+            AnalyzeView(localUsername: localUsername)
                 .tabItem {
                     Image(systemName: "list.bullet")
                     Text("历史")
                 }
                 .tag(0)
-            PersonView(localUsername: localUsername)
+            ExerciseView(localUsername: localUsername)
                 .tabItem {
                     Image(systemName: "figure.run")
                     Text("运动")

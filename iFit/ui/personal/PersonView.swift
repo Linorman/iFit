@@ -68,6 +68,28 @@ struct PersonView: View {
                         .textFieldStyle(.roundedBorder)
                         .disabled(true)
                 }
+                Section {
+                    NavigationLink(destination: SettingsView()) {
+                        Text("Setting")
+                            .foregroundColor(.white)
+                            .fontWeight(.bold)
+                            .padding()
+                            .background(.blue)
+                            .cornerRadius(10)
+                    }
+                }
+                Section {
+                    NavigationLink(destination: AppInfoView(developer: "Linorman", donationLink: "https://www.example.com/donate", githubLink: "https://github.com/Linorman", giteeLink: "https://gitee.com/linorman", license: "MIT License")) {
+                        Text("Software Information")
+                            .foregroundColor(.white)
+                            .fontWeight(.bold)
+                            .padding()
+                            .background(.blue)
+                            .cornerRadius(10)
+                    }
+                }
+                
+                
             }
             .alert(isPresented: $isAlert) {
                 Alert(title: Text("错误"), message: Text("请重新登录"), dismissButton: .default(Text("确定"), action: {self.presentationMode.wrappedValue.dismiss()}

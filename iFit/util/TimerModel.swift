@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-class ExerciseViewModel: ObservableObject {
+class TimerModel: ObservableObject {
     @Published var timeElapsed: TimeInterval = 0
     @Published var isRunning = false
     
@@ -40,7 +40,7 @@ class ExerciseViewModel: ObservableObject {
             }
     }
     
-    private func stop() {
+    public func stop() {
         isRunning = false
         startDate = nil
         tickCancellable?.cancel()
