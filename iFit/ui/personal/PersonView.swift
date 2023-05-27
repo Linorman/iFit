@@ -10,15 +10,20 @@ import SwiftUI
 import CoreData
 
 struct PersonView: View {
-    @Environment(\.localUser) private var localUser
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.presentationMode) var presentationMode
     
     @State private var isShowingImagePicker = false
     @State private var selectedImage: UIImage?
     @State private var name = ""
     @State private var phoneNumber = ""
     @State private var email = ""
+    @State private var isAlert = false
+    @State private var localUsername: String
     
+    init(localUsername: String) {
+        _localUsername = State(initialValue: localUsername)
+    }
     
     
     var body: some View {
@@ -41,77 +46,114 @@ struct PersonView: View {
                             .foregroundColor(.gray)
                     }
                 }
+                
                 .sheet(isPresented: $isShowingImagePicker, onDismiss: loadImage) {
                     ImagePicker(image: self.$selectedImage)
                 }
-//                HStack {
-//                    Text("姓名:")
-//                    TextField("名字", text: $name)
-//                        .textFieldStyle(.roundedBorder)
-//                        .onAppear {
-//                            name =   localUser.wrappedValue.username ?? ""
-//                        }
-//                }
-//                HStack {
-//                    Text("手机号码:")
-//                    TextField("手机号码", text: $phoneNumber)
-//                        .textFieldStyle(.roundedBorder)
-//                        .onAppear {
-//                            phoneNumber = localUser.wrappedValue.phoneNumber ?? ""
-//                        }
-//                }
-//                HStack {
-//                    Text("邮箱:")
-//                    TextField("邮箱", text: $email)
-//                        .textFieldStyle(.roundedBorder)
-//                        .onAppear {
-//                            email = localUser.wrappedValue.email ?? ""
-//                        }
-//                }
-//                HStack {
-//                    Text("姓名:")
-//                    TextField("名字", text: $name)
-//                        .textFieldStyle(.roundedBorder)
-//                }
-//                HStack {
-//                    Text("手机号码:")
-//                    TextField("手机号码", text: $phoneNumber)
-//                        .textFieldStyle(.roundedBorder)
-//                }
-//                HStack {
-//                    Text("邮箱:")
-//                    TextField("邮箱", text: $email)
-//                        .textFieldStyle(.roundedBorder)
-//                }
+                HStack {
+                    Text("姓名:")
+                    TextField("名字", text: $name)
+                        .textFieldStyle(.roundedBorder)
+                        .disabled(true)
+                }
+                HStack {
+                    Text("手机号码:")
+                    TextField("手机号码", text: $phoneNumber)
+                        .textFieldStyle(.roundedBorder)
+                        .disabled(true)
+                }
+                HStack {
+                    Text("邮箱:")
+                    TextField("邮箱", text: $email)
+                        .textFieldStyle(.roundedBorder)
+                        .disabled(true)
+                }
+                Section {
+                    NavigationLink(destination: SettingsView()) {
+                        Text("Setting")
+                            .foregroundColor(.white)
+                            .fontWeight(.bold)
+                            .padding()
+                            .background(.blue)
+                            .cornerRadius(10)
+                    }
+                }
+                Section {
+                    NavigationLink(destination: AppInfoView(developer: "Linorman", donationLink: "https://www.example.com/donate", githubLink: "https://github.com/Linorman", giteeLink: "https://gitee.com/linorman", license: "MIT License")) {
+                        Text("Software Information")
+                            .foregroundColor(.white)
+                            .fontWeight(.bold)
+                            .padding()
+                            .background(.blue)
+                            .cornerRadius(10)
+                    }
+                }
+                
+                
+            }
+            .alert(isPresented: $isAlert) {
+                Alert(title: Text("错误"), message: Text("请重新登录"), dismissButton: .default(Text("确定"), action: {self.presentationMode.wrappedValue.dismiss()}
+                                                                                        )
+                )
             }
             .padding()
             .navigationTitle("个人信息")
-            .onAppear {
-                print(localUser.wrappedValue)
-                let request = NSFetchRequest<User>(entityName: "User")
-                request.predicate = NSPredicate(format: "username == %@ ", localUser.wrappedValue)
-                
-                do {
-                    let users = try viewContext.fetch(request)
-                    if let user = users.first {
-                        self.name = user.username ?? "无名"
-                        self.email = user.email ?? "没有"
-                        self.phoneNumber = user.phoneNumber ?? "没有"
-                    } else {
-                        // Invalid credentials.
-                        // Show an error message to the user.
-                    }
-                } catch {
-                    // Error fetching users.
-                    // Show an error message to the user.
-                }
-            }
             
+            
+        }
+        .onAppear {
+            let request = NSFetchRequest<User>(entityName: "User")
+            request.predicate = NSPredicate(format: "username == %@ ", localUsername)
+            
+            do {
+                let users = try viewContext.fetch(request)
+                if let user = users.first {
+                    self.name = user.username ?? "无名"
+                    self.email = user.email ?? "没有"
+                    self.phoneNumber = user.phoneNumber ?? "没有"
+                    if let imageData = user.avatar {
+                        selectedImage = UIImage(data: imageData)
+                    } else {
+                        // isShowingImagePicker = true
+                    }
+                } else {
+                    // Invalid credentials.
+                    // Show an error message to the user.
+                    self.isAlert = true
+                }
+            } catch {
+                // Error fetching users.
+                // Show an error message to the user.
+            }
         }
     }
     
     func loadImage() {
         guard let selectedImage = selectedImage else { return }
-        // 保存头像图片到相册或者服务器
+        
+        guard let imageURL = selectedImage.saveToDisk() else { return }
+        
+        // 将图像数据编码为PNG格式
+        guard let imageData = selectedImage.pngData() else { return }
+        
+        let request = NSFetchRequest<User>(entityName: "User")
+        request.predicate = NSPredicate(format: "username == %@ ", localUsername)
+        
+        do {
+            let users = try viewContext.fetch(request)
+            if let user = users.first {
+                // 更新用户实体的头像属性
+                user.avatar = imageData
+                user.avatarURL = imageURL.absoluteString
+                try? viewContext.save()
+            } else {
+                // Invalid credentials.
+                // Show an error message to the user.
+                self.isAlert = true
+            }
+        } catch {
+            // Error fetching users.
+            // Show an error message to the user.
+        }
     }
 }

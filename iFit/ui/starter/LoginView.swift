@@ -9,48 +9,70 @@ import CoreData
 
 struct LoginView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @Environment(\.isLogged) private var isLogged
-    @Environment(\.localUser) private var localUser
+    @Environment(\.presentationMode) var presentationMode
     
     @State private var username: String = ""
     @State private var password: String = ""
-    @State private var email: String = ""
-    @State private var phoneNumber: String = ""
-    @State private var user: User = User()
     
     @State private var showingAlert = false
     @State private var isRegistering = false
+    @State private var isLogged: Bool? = false
     
     var body: some View {
         VStack {
-            TextField("Username", text: $username)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            SecureField("Password", text: $password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
+            Image("Logo")
+            HStack {
+                Text("用户名:")
+                    .frame(width: 70, height: 5)
+                TextField("Username", text: $username)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+            }
+            HStack {
+                Text("密码:")
+                    .frame(width: 70, height: 5)
+                SecureField("Password", text: $password)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+            }
+            
             Button(action: {
                 login()
             }) {
-                Text("Login")
+                Text("登陆")
             }
             .padding()
-            .environment(\.localUser, $user)
+            .foregroundColor(.brown)
+            .fontWeight(.bold)
+            
             Spacer()
             NavigationLink(destination: RegisterView()) {
-                            Text("Don't have an account? Register here.")
+                            Text("还没有账号? 点击这里注册")
                                 .foregroundColor(.blue)
+                                .fontWeight(.light)
+                                .font(.footnote)
             }
+            NavigationLink(
+                destination: TabBarView(localUsername: username).navigationBarBackButtonHidden(true),
+                tag: true, selection: $isLogged
+                    ) {
+                        EmptyView()
+                    }
+                    .navigationBarBackButtonHidden(true)
+                    .onDisappear {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+            
         }
         .padding()
         .alert(isPresented: $showingAlert) {
             Alert(title: Text("登录错误"), message: Text("用户名或密码错误，请重试"), dismissButton: .default(Text("确定")))
         }
+        
     }
     
     
     private func login() {
-        // Check if user has valid credentials.
         let request = NSFetchRequest<User>(entityName: "User")
         request.predicate = NSPredicate(format: "username == %@ && password == %@", username, password)
         
@@ -59,11 +81,8 @@ struct LoginView: View {
             if let user = users.first {
                 // Successfully logged in.
                 // Do something here...
-//                self.user = user
-                localUser.wrappedValue = user
-                print(localUser.wrappedValue)
-                isLogged.wrappedValue = true
-                print(isLogged.wrappedValue)
+                self.username = user.username ?? "null"
+                $isLogged.wrappedValue = true
             } else {
                 // Invalid credentials.
                 // Show an error message to the user.

@@ -19,41 +19,42 @@ struct RegisterView: View {
     @State private var email: String = ""
     @State private var isActive: Bool = false
     @State private var isSuccessed: Bool = false
+    @State private var isFailed: Bool = false
     
     var body: some View {
-        
         VStack {
-            TextField("Username", text: $username)
+            TextField("用户名", text: $username)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
-            SecureField("Password", text: $password)
+            SecureField("密码", text: $password)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
-            TextField("Phone Number", text: $phoneNumber)
+            TextField("电话号码", text: $phoneNumber)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
-            TextField("Email", text: $email)
+            TextField("邮箱", text: $email)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
             Button(action: {
                 register()
             }) {
-                Text("Register")
+                Text("注册")
             }
             .padding()
             Spacer()
-            Text("Already have an account? Login here.")
+            Text("已经有账号? 在这里登陆。")
                 .foregroundColor(.blue)
                 .onTapGesture {
                     self.presentationMode.wrappedValue.dismiss()
                 }
+                .fontWeight(.light)
+                .font(.footnote)
         }.padding()
             .alert(isPresented: $isSuccessed) {
                 Alert(title: Text("注册成功"), message: Text("您已经注册成功！请返回登陆。"), dismissButton: .default(Text("确定"), action: {self.presentationMode.wrappedValue.dismiss()}
                                                                                                    )
                 )
             }
-        
         
     }
     
@@ -67,9 +68,19 @@ struct RegisterView: View {
         
         // Save the new user to Core Data.
         do {
+            let request = NSFetchRequest<User>(entityName: "User")
+            request.predicate = NSPredicate(format: "username == %@ ", newUser.username!)
+            do {
+                let users = try viewContext.fetch(request)
+                if !users.isEmpty {
+                    self.isFailed = true
+                }
+            } catch {
+                // Error fetching users.
+                // Show an error message to the user.
+            }
             try viewContext.save()
             self.isSuccessed = true
-//            self.presentationMode.wrappedValue.dismiss()
             // Successfully registered.
             // Do something here...
             
