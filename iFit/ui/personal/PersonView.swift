@@ -79,7 +79,7 @@ struct PersonView: View {
                     }
                 }
                 Section {
-                    NavigationLink(destination: AppInfoView(developer: "Linorman", donationLink: "https://www.example.com/donate", githubLink: "https://github.com/Linorman", giteeLink: "https://gitee.com/linorman", license: "MIT License")) {
+                    NavigationLink(destination: AppInfoView(developer: "Linorman", donationLink: "http://124.222.219.168:8090/donate", githubLink: "https://github.com/Linorman", giteeLink: "https://gitee.com/linorman", license: "MIT License")) {
                         Text("Software Information")
                             .foregroundColor(.white)
                             .fontWeight(.bold)
