@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import AudioToolbox
 
 struct CountdownModeView: View {
     @StateObject private var viewModel = TimerModel()
@@ -67,11 +68,10 @@ struct CountdownModeView: View {
                 
                 
                 VStack {
-                    Image(systemName: "exclamationmark.circle.fill")
-                        .foregroundColor(.gray)
-                        .font(.system(size: 20))
-//                        .background(.gray)
-                        .clipShape(Capsule())
+//                    Image(systemName: "exclamationmark.circle.fill")
+//                        .foregroundColor(.gray)
+//                        .font(.system(size: 20))
+//                        .clipShape(Capsule())
 //                        .alert(isPresented: $editTime) {
 //                            Alert(title: "提示", message: "请到设置中修改定时器时间。", dismissButton: .default(Text("确定")))
 //                        }
@@ -95,15 +95,6 @@ struct CountdownModeView: View {
                     .onTapGesture {
                         viewModel.toggle()
                     }
-//                Image(systemName: "pencil")
-//                    .font(.system(size: 40))
-//                    .foregroundColor(.white)
-//                    .frame(minWidth: 0, maxWidth: 80, minHeight: 0, maxHeight: 80)
-//                    .background(.pink)
-//                    .clipShape(Capsule())
-//                    .onTapGesture {
-//
-//                    }
                 Image(systemName: "arrow.clockwise")
                     .font(.system(size: 40))
                     .foregroundColor(.white)
@@ -111,7 +102,6 @@ struct CountdownModeView: View {
                     .background(.blue)
                     .clipShape(Capsule())
                     .onTapGesture {
-//                        viewModel.toggle()
                         viewModel.stop()
                         self.counterTime = 0
                         withAnimation(.default) {
@@ -133,6 +123,10 @@ struct CountdownModeView: View {
                         record.dateStamp = Date()
                         do {
                             try viewContext.save()
+                            self.image = Image(systemName: "photo")
+                                .resizable()
+                                .frame(width: 210, height: 170)
+                                .cornerRadius(10) as! UIImage
                         } catch {
                             print("Error saving exercise record: \(error.localizedDescription)")
                         }
@@ -171,6 +165,12 @@ struct CountdownModeView: View {
                 self.counterTime += 1
             }else {
                 viewModel.toggle()
+                // 播放铃声
+                AudioServicesPlaySystemSound(SystemSoundID(1000))
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    // 停止播放系统提示音
+                    AudioServicesDisposeSystemSoundID(SystemSoundID(1000))
+}
             }
         }
     }

@@ -7,11 +7,16 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 
 struct AnalyzeView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.presentationMode) var presentationMode
+    
     @State private var totalDuration: Double = 0
-    @FetchRequest(entity: ExerciseRecord.entity(), sortDescriptors: []) var records: FetchedResults<ExerciseRecord>
+    // @FetchRequest(entity: ExerciseRecord.entity(), sortDescriptors: []) var records: FetchedResults<ExerciseRecord>
+    @State private var records: [ExerciseRecord] = []
     @State private var showingHistoryView = false // 是否显示HistoryView
     @State private var selectedRecord: ExerciseRecord? // 选择的记录
     @State private var localUsername: String
@@ -48,11 +53,27 @@ struct AnalyzeView: View {
                     HistoryView(record: record)
                 }
             }
-            .onAppear(perform: calculateTotalDuration)
+            .onAppear {
+                initRecords()
+                calculateTotalDuration()
+            }
             .navigationTitle("历史记录")
         }
         .padding()
     }
+    
+    private func initRecords() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ExerciseRecord")
+                fetchRequest.predicate = NSPredicate(format: "username == %@", localUsername)
+                fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dateStamp", ascending: false)]
+                do {
+                    let result = try viewContext.fetch(fetchRequest)
+                    records = result as! [ExerciseRecord]
+                } catch {
+                    print(error)
+                }
+    }
+    
     
     private func calculateTotalDuration() {
         // 计算健身总时长

@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct SettingsView: View {
-
+    @Environment(\.presentationMode) var presentationMode
     @State private var sportUnit: String = ""
     @State private var isRingOn: Bool = false
     @State private var dailyTime: Int = 0
     @State private var timer: Int = 0
     
     @State private var showAlert: Bool = false
+    @State private var isLoggedOut: Bool? = false
 
     var body: some View {
         NavigationView {
@@ -47,7 +48,7 @@ struct SettingsView: View {
                     }
                     
                     Section(header: Text("定时器设置")) {
-                        Stepper("\(timer) 分钟", value: $dailyTime, in: 0...1440, step: 1)
+                        Stepper("\(timer) 秒", value: $dailyTime, in: 0...1440, step: 1)
                     }
                 }
                 .background(.white)
@@ -56,6 +57,13 @@ struct SettingsView: View {
                     Text("保存").frame(maxWidth: .infinity).padding().background(Color.orange).foregroundColor(.white).cornerRadius(8).padding()
                         
                 }.disabled(sportUnit.isEmpty && !isRingOn)
+                
+//                Button(action: {
+//                    $isLoggedOut.wrappedValue = true
+//                }) {
+//                    Text("退出登录").frame(maxWidth: .infinity).padding().background(Color.red).foregroundColor(.white).cornerRadius(8).padding()
+//                }
+                
             }
         }
         .onAppear {
